@@ -193,28 +193,10 @@ const produtosPadrao = [
 
 
 /* ========================================
-   INICIAR PRODUTOS
+   PRODUTOS ONLINE (FIRESTORE)
 ======================================== */
 
-if (
-    !localStorage.getItem(
-        "lyonProdutos"
-    )
-) {
-
-    localStorage.setItem(
-
-        "lyonProdutos",
-
-        JSON.stringify(
-            produtosPadrao
-        )
-
-    );
-
-}
-
-
+let produtosCache = [];
 
 /* ========================================
    VARIÁVEIS
@@ -311,17 +293,7 @@ window.addEventListener(
 ======================================== */
 
 function pegarProdutos() {
-
-    return (
-
-        JSON.parse(
-            localStorage.getItem(
-                "lyonProdutos"
-            )
-        ) || []
-
-    );
-
+    return produtosCache;
 }
 
 
@@ -371,7 +343,7 @@ function renderProdutos() {
         const fotos=(produto.galeria&&produto.galeria.length?produto.galeria:[produto.imagem]).filter(Boolean);
         card.innerHTML=`
             <span class="product-category">${produto.categoria}</span>
-            <div class="product-image product-clickable" onclick="abrirProduto(${produto.id})">
+            <div class="product-image product-clickable" onclick='abrirProduto(${JSON.stringify(produto.id)})'>
                 <img id="produto-img-${produto.id}" src="${fotos[0]||produto.imagem}" alt="${produto.nome}" loading="lazy" onerror="this.src='https://placehold.co/600x700/f1f3f7/061a40?text=LYON+SPORTS'">
                 ${fotos.length>1?`<span class="photo-count">📷 ${fotos.length} fotos</span>`:''}
             </div>
@@ -379,7 +351,7 @@ function renderProdutos() {
                 <h3>${produto.nome}</h3>
                 <p class="product-description">${produto.qualidade||'Qualidade Tailandesa'} • Modelo torcedor</p>
                 <div class="price">${formatarPreco(produto.preco)}</div>
-                <button class="add-button" onclick="abrirProduto(${produto.id})">VER DETALHES E COMPRAR →</button>
+                <button class="add-button" onclick='abrirProduto(${JSON.stringify(produto.id)})'>VER DETALHES E COMPRAR →</button>
             </div>`;
         grid.appendChild(card);
     });
@@ -1169,6 +1141,16 @@ function finalizarWhatsApp() {
 /* ========================================
    INICIALIZAR
 ======================================== */
+
+// Atualização em tempo real: qualquer alteração feita no Admin aparece para todos.
+db.collection("produtos").orderBy("criadoEm", "desc").onSnapshot(snapshot => {
+    produtosCache = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderProdutos();
+}, erro => {
+    console.error("Erro ao carregar produtos do Firebase:", erro);
+    const grid = document.getElementById("products-grid");
+    if (grid) grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#b42318"><h3>Não foi possível carregar o catálogo.</h3><p>Confira as regras do Firestore.</p></div>`;
+});
 
 renderProdutos();
 
