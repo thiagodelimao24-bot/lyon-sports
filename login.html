@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Login | Lyon Sports
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="login-page">
+
+
+<div class="login-box">
+
+
+    <img
+        src="img/logo.png"
+        alt="Lyon Sports"
+        class="login-logo"
+    >
+
+
+    <h1>
+        Lyon Sports
+    </h1>
+
+
+    <p>
+        PAINEL ADMINISTRATIVO
+    </p>
+
+
+    <form id="login-form">
+
+
+        <div class="form-group">
+
+            <label>
+                USUÁRIO
+            </label>
+
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Digite seu usuário"
+                autocomplete="username"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                SENHA
+            </label>
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+                autocomplete="current-password"
+                required
+            >
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="login-submit"
+        >
+
+            ENTRAR
+
+        </button>
+
+
+        <div
+            id="login-error"
+            class="login-error"
+        >
+        </div>
+
+    </form>
+
+
+    <a
+        href="index.html"
+        class="back-store"
+    >
+
+        ← Voltar para a loja
+
+    </a>
+
+</div>
+
+
+<script src="login.js"></script>
+
+</body>
+
+</html>
