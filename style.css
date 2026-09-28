@@ -3900,3 +3900,96 @@ footer a:hover {
 /* ===== V4: DETALHES DO PRODUTO / GALERIA ===== */
 .product-clickable{cursor:pointer}.photo-count{position:absolute;right:12px;bottom:12px;z-index:4;background:rgba(6,26,64,.86);color:#fff;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800}.product-modal-overlay{position:fixed;inset:0;background:rgba(2,12,30,.72);backdrop-filter:blur(7px);z-index:1100;opacity:0;visibility:hidden;transition:.25s}.product-modal-overlay.open{opacity:1;visibility:visible}.product-modal{position:fixed;z-index:1101;left:50%;top:50%;transform:translate(-50%,-46%) scale(.97);width:min(1040px,94vw);max-height:92vh;overflow:auto;background:#fff;border-radius:28px;box-shadow:0 30px 90px rgba(0,0,0,.35);opacity:0;visibility:hidden;transition:.25s}.product-modal.open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}.product-modal-close{position:absolute;right:16px;top:16px;z-index:8;width:42px;height:42px;border:0;border-radius:50%;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.12);font-size:18px;cursor:pointer}.product-modal-grid{display:grid;grid-template-columns:1.08fr .92fr}.product-gallery-view{position:relative;background:#f3f5f9;min-height:610px;display:flex;align-items:center;justify-content:center;padding:28px 28px 105px}.product-gallery-view>img{width:100%;height:500px;object-fit:contain;user-select:none}.gallery-arrow{position:absolute;top:45%;width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.94);box-shadow:0 5px 18px rgba(0,0,0,.12);font-size:34px;line-height:1;cursor:pointer;z-index:4}.gallery-prev{left:18px}.gallery-next{right:18px}.modal-thumbnails{position:absolute;bottom:42px;left:24px;right:24px;display:flex;gap:8px;justify-content:center;overflow-x:auto}.modal-thumb{width:58px;height:58px;padding:2px;border:2px solid transparent;border-radius:10px;background:#fff;cursor:pointer;flex:0 0 auto}.modal-thumb.active{border-color:#061a40}.modal-thumb img{width:100%;height:100%;object-fit:cover;border-radius:7px}.swipe-hint{position:absolute;bottom:14px;color:#667085;font-size:10px}.product-modal-info{padding:56px 42px 36px}.modal-category{font-size:11px;font-weight:900;letter-spacing:1px;color:#557; text-transform:uppercase}.product-modal-info h2{font-size:30px;color:#061a40;margin:8px 0 10px}.modal-price{font-size:28px;font-weight:900;color:#061a40;margin-bottom:18px}.modal-description{color:#667085;line-height:1.65;font-size:14px}.product-benefits{display:grid;gap:6px;margin:18px 0;color:#173b70;font-size:12px;font-weight:700}.modal-label{display:block;margin:14px 0 7px;font-size:10px;font-weight:900;letter-spacing:.8px;color:#061a40}.personalize-box{display:flex;gap:12px;align-items:center;margin-top:16px;padding:14px;border:1px solid #dce3ee;border-radius:14px;cursor:pointer}.personalize-box input{width:18px;height:18px}.personalize-box span{display:flex;flex-direction:column;gap:2px}.personalize-box small{color:#667085}.personalize-fields{display:none;grid-template-columns:1fr 100px;gap:8px;margin-top:9px}.personalize-fields.show{display:grid}.personalize-fields input{padding:13px;border:1px solid #dce3ee;border-radius:10px;outline:none}.modal-buy{margin-top:18px;width:100%}.modal-open{overflow:hidden}.floating-support{position:fixed;right:20px;bottom:20px;z-index:900;display:flex;align-items:center;gap:8px;background:#0d6b43;color:#fff;text-decoration:none;padding:13px 17px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,.22);font-size:13px}.floating-support span{font-size:20px}
 @media(max-width:760px){.product-modal{width:96vw;max-height:94vh;border-radius:22px}.product-modal-grid{grid-template-columns:1fr}.product-gallery-view{min-height:410px;padding:20px 20px 88px}.product-gallery-view>img{height:330px}.product-modal-info{padding:28px 22px 30px}.product-modal-info h2{font-size:23px}.gallery-arrow{width:40px;height:40px}.floating-support strong{display:none}.floating-support{padding:12px}}
+
+/* ========================================
+   CARRINHO COMPACTO - CORREÇÃO V8.1
+======================================== */
+.cart-items{
+    padding:16px;
+}
+
+.cart-item{
+    display:grid;
+    grid-template-columns:96px minmax(0,1fr) 34px;
+    gap:14px;
+    align-items:center;
+    min-height:118px;
+    padding:12px;
+    margin-bottom:12px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:#fff;
+}
+
+.cart-item > img{
+    display:block;
+    width:96px;
+    height:108px;
+    max-width:96px;
+    object-fit:contain;
+    object-position:center;
+    border-radius:10px;
+    background:#f6f8fb;
+}
+
+.cart-item > div{
+    min-width:0;
+    align-self:center;
+}
+
+.cart-item h4{
+    margin:0 0 6px;
+    font-size:13px;
+    line-height:1.25;
+    color:var(--blue-900);
+}
+
+.cart-item p{
+    margin:3px 0;
+    font-size:10px;
+    line-height:1.35;
+}
+
+.cart-item strong{
+    display:block;
+    margin-top:7px;
+    font-size:13px;
+}
+
+.quantity-controls{
+    margin-top:9px;
+}
+
+.remove-item{
+    width:34px;
+    height:34px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    align-self:center;
+    padding:0;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.cart-footer{
+    flex-shrink:0;
+}
+
+@media(max-width:600px){
+    .cart{width:100%;max-width:100%;}
+    .cart-header{padding:18px;}
+    .cart-items{padding:12px;}
+    .cart-item{
+        grid-template-columns:82px minmax(0,1fr) 32px;
+        gap:10px;
+        min-height:106px;
+        padding:10px;
+    }
+    .cart-item > img{
+        width:82px;
+        height:94px;
+        max-width:82px;
+    }
+    .cart-footer{padding:16px;}
+}
